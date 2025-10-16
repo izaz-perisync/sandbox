@@ -1,0 +1,55 @@
+# github.com/cention-sany/utf7 v0.0.0-20170124080048-26cad61bd60a
+## explicit
+github.com/cention-sany/utf7
+# github.com/emersion/go-sasl v0.0.0-20241020182733-b788ff22d5a6
+## explicit; go 1.12
+github.com/emersion/go-sasl
+# github.com/emersion/go-smtp v0.24.0
+## explicit; go 1.13
+github.com/emersion/go-smtp
+# github.com/gogs/chardet v0.0.0-20211120154057-b7413eaefb8f
+## explicit
+github.com/gogs/chardet
+# github.com/jaytaylor/html2text v0.0.0-20230321000545-74c2419ad056
+## explicit
+github.com/jaytaylor/html2text
+# github.com/jhillyerd/enmime v1.3.0
+## explicit; go 1.18
+github.com/jhillyerd/enmime
+github.com/jhillyerd/enmime/internal/coding
+github.com/jhillyerd/enmime/internal/stringutil
+github.com/jhillyerd/enmime/internal/textproto
+github.com/jhillyerd/enmime/mediatype
+# github.com/mattn/go-runewidth v0.0.15
+## explicit; go 1.9
+github.com/mattn/go-runewidth
+# github.com/olekukonko/tablewriter v0.0.5
+## explicit; go 1.12
+github.com/olekukonko/tablewriter
+# github.com/pkg/errors v0.9.1
+## explicit
+github.com/pkg/errors
+# github.com/rivo/uniseg v0.4.4
+## explicit; go 1.18
+github.com/rivo/uniseg
+# github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf
+## explicit
+github.com/ssor/bom
+# golang.org/x/net v0.23.0
+## explicit; go 1.18
+golang.org/x/net/html
+golang.org/x/net/html/atom
+# golang.org/x/text v0.14.0
+## explicit; go 1.18
+golang.org/x/text/encoding
+golang.org/x/text/encoding/charmap
+golang.org/x/text/encoding/internal
+golang.org/x/text/encoding/internal/identifier
+golang.org/x/text/encoding/japanese
+golang.org/x/text/encoding/korean
+golang.org/x/text/encoding/simplifiedchinese
+golang.org/x/text/encoding/traditionalchinese
+golang.org/x/text/encoding/unicode
+golang.org/x/text/internal/utf8internal
+golang.org/x/text/runes
+golang.org/x/text/transform
