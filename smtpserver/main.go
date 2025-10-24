@@ -169,89 +169,11 @@ func handleConn(conn net.Conn) {
 			continue
 		}
 
-		// if inData {
-		// 	if line == "." {
-		// 		inData = false
-		// 		send("250 OK: queued")
-
-		// 		// Parse subject from headers
-		// 		subject := ""
-		// 		bodyLines := []string{}
-		// 		for _, l := range data {
-		// 			if strings.HasPrefix(strings.ToLower(l), "subject:") && subject == "" {
-		// 				subject = strings.TrimSpace(l[len("subject:"):])
-		// 				continue
-		// 			}
-		// 			bodyLines = append(bodyLines, l)
-		// 		}
-
-		// 		email := Email{
-		// 			User:        username,
-		// 			From:        from,
-		// 			To:          to,
-		// 			Subject:     subject,
-		// 			Body:        strings.Join(bodyLines, "\n"),
-		// 			Attachments: nil, // Could parse MIME for attachments
-		// 			ReceivedAt:  time.Now().Format(time.RFC3339),
-		// 		}
-
-		// 		j, _ := json.MarshalIndent(email, "", "  ")
-		// 		log.Println("📩 Received email:\n" + string(j))
-
-		// 		// Reset for next email
-		// 		data = nil
-		// 		from = ""
-		// 		to = nil
-		// 		continue
-		// 	}
-		// 	data = append(data, line)
-		// 	continue
-		// }
-
 		switch {
 		case strings.HasPrefix(line, "EHLO") || strings.HasPrefix(line, "HELO"):
 			send("250-localhost")
 			send("250-AUTH PLAIN LOGIN")
 			send("250 OK")
-		// case strings.HasPrefix(line, "AUTH PLAIN"):
-		// 	authType = "PLAIN"
-		// 	send("334 VXNlcm5hbWU6") // "Username:"
-
-		// 	if strings.HasPrefix(line, "AUTH PLAIN") {
-		// 		parts := strings.Fields(line) // splits by spaces
-		// 		if len(parts) != 2 {
-		// 			send("501 Syntax error")
-		// 			return
-		// 		}
-
-		// 		b64payload := strings.TrimSpace(parts[1]) // remove any whitespace/newline
-		// 		decoded, err := base64.StdEncoding.DecodeString(b64payload)
-		// 		if err != nil {
-		// 			log.Println("base64 decode error:", err, "payload:", b64payload)
-		// 			send("501 Invalid base64")
-		// 			return
-		// 		}
-
-		// 		tokens := bytes.SplitN(decoded, []byte{0}, 3)
-		// 		if len(tokens) < 2 {
-		// 			send("501 Invalid auth format")
-		// 			return
-		// 		}
-
-		// 		username := string(tokens[len(tokens)-2])
-		// 		password := string(tokens[len(tokens)-1])
-		// 		log.Println("decoded username:", username, "password:", password)
-		// 		// check creds
-		// 		if pwd, ok := smtpCreds[username]; ok && pwd == password {
-		// 			authenticated = true
-		// 			send("235 Authentication successful")
-		// 			log.Println("✅ Auth PLAIN success for:", username)
-		// 		} else {
-		// 			send("535 Authentication failed")
-		// 			log.Println("❌ Auth PLAIN failed for:", username)
-		// 			return
-		// 		}
-		// 	}
 		case strings.HasPrefix(line, "AUTH PLAIN"):
 			// Do NOT treat it as LOGIN
 			authType = "PLAIN"
@@ -274,25 +196,6 @@ func handleConn(conn net.Conn) {
 				b64payload, _ = reader.ReadString('\n')
 				b64payload = strings.TrimSpace(b64payload)
 			}
-			// parts := strings.Fields(line) // splits by space
-			// var b64payload string
-			// // if len(parts) != 2 {
-			// // 	send("501 Syntax error")
-			// // 	return
-			// // }
-			// if len(parts) == 2 {
-			// 	// base64 is on the same line
-			// 	b64payload = strings.TrimSpace(parts[1])
-			// } else if len(parts) == 1 {
-			// 	// client will send base64 next
-			// 	send("334 ") // prompt for payload (empty)
-			// 	b64payload, _ = reader.ReadString('\n')
-			// 	b64payload = strings.TrimSpace(b64payload)
-			// } else {
-			// 	fmt.Println("jere",len(parts))
-			// 	send("501 Syntax error")
-			// 	return
-			// }
 
 			// b64payload := strings.TrimSpace(parts[1])
 			decoded, err := base64.StdEncoding.DecodeString(b64payload)
